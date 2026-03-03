@@ -346,12 +346,12 @@ let temp = parseFloat(S('c_temp')||'0.7');
 let history = [], isLoading = false;
 
 // ── Splash ──
-window.addEventListener('load', () => {
+document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
-    $('splash').style.opacity='0';
     $('splash').style.transition='opacity 0.4s';
-    setTimeout(()=>{ $('splash').style.display='none'; init(); }, 400);
-  }, 800);
+    $('splash').style.opacity='0';
+    setTimeout(()=>{ $('splash').style.display='none'; init(); }, 450);
+  }, 600);
 });
 
 function init() {
