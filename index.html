@@ -16,12 +16,6 @@
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Noto Serif SC',serif;font-weight:300;-webkit-font-smoothing:antialiased}
 body{display:flex;flex-direction:column;height:100dvh;max-width:480px;margin:0 auto;position:relative;overflow:hidden}
 
-/* Splash */
-#splash{position:fixed;inset:0;background:var(–bg);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
-.splash-ring{width:48px;height:48px;border:1.5px solid var(–border);border-top-color:var(–accent);border-radius:50%;animation:spin 1s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.splash-text{font-size:12px;color:var(–text-muted);letter-spacing:0.1em;font-family:‘DM Mono’,monospace}
-
 /* Setup */
 #setup{position:fixed;inset:0;background:var(–bg);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;gap:14px;overflow-y:auto}
 #setup h2{font-size:16px;font-weight:300;letter-spacing:0.08em;text-align:center;margin-bottom:4px}
@@ -134,13 +128,6 @@ textarea::-webkit-scrollbar{display:none}
 
 </head>
 <body>
-
-<!-- Splash -->
-
-<div id="splash">
-  <div class="splash-ring"></div>
-  <div class="splash-text">载入中</div>
-</div>
 
 <!-- Setup -->
 
@@ -346,13 +333,7 @@ let temp = parseFloat(S('c_temp')||'0.7');
 let history = [], isLoading = false;
 
 // ── Splash ──
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    $('splash').style.transition='opacity 0.4s';
-    $('splash').style.opacity='0';
-    setTimeout(()=>{ $('splash').style.display='none'; init(); }, 450);
-  }, 600);
-});
+document.addEventListener("DOMContentLoaded", init);
 
 function init() {
   if (apiKey && apiUrl) {
